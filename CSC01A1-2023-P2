@@ -1,0 +1,78 @@
+#include <iostream>
+
+using namespace std;
+
+int main() {
+    int choice;
+
+    while (true) {
+        cout << "Select an option:" << endl;
+        cout << "1. Option A(remaining battery level)" << endl;
+        cout << "2. Option B(Semester Test)" << endl;
+        cout << "3. Exit" << endl;
+        cout << "Your choice: ";
+        cin >> choice;
+
+        if (choice == 1) {
+            int batteryLevel;
+
+            while (true) {
+                cout << "Enter the amount of remaining battery level (in percentage): ";
+                cin >> batteryLevel;
+
+                if (batteryLevel >= 0 && batteryLevel <= 15 ) {
+                    cout << "Charging required! You may get stuck on the road.\n";
+                    break;
+                } else if (batteryLevel > 15 && batteryLevel <= 35 ) {
+                    cout << "Barely enough power remaining. Use the shortest route..\n";
+                    break;
+                } else if (batteryLevel > 35 && batteryLevel <= 75 ) {
+                    cout << "There should be enough battery power to last you the entire trip..\n";
+                    break;
+                } else {
+                    cout << "The battery is sufficiently charged.!\n";
+                    break;
+                }
+            }
+
+        } else if (choice == 2) {
+            int marks, totalMarks;
+            double percentage;
+
+            while (true) {
+                // ask the user for input
+                cout << "Enter the mark you received for the Semester Test: ";
+                cin >> marks;
+
+                cout << "Enter the total possible marks for the Semester Test: ";
+                cin >> totalMarks;
+
+                // calculate percentage
+                percentage = static_cast<double>(marks) / totalMarks * 100;
+
+                // check if the percentage is less than 50%
+                if (percentage < 50) {
+                    cout << "You need to invest more time in your schoolwork." << endl;
+                } else {
+                    cout << "Keep it up." << endl;
+                }
+
+                cout << "Press 1 to go back to main menu or any other key continue with option B: ";
+                cin >> choice;
+
+                if (choice == 1) {
+                    break;
+                }
+            }
+
+        } else if (choice == 3) {
+            cout << "Exiting program..." << endl;
+            break;
+        } else {
+            cout << "Invalid choice. Please select again." << endl;
+        }
+    }
+
+    return 0;
+}
+
